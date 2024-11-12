@@ -1,0 +1,51 @@
+/* styles.css */
+
+.container {
+    max-width: 800px;
+}
+
+.custom-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.custom-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.custom-label {
+    font-weight: bold;
+}
+
+.custom-input {
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.custom-button {
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
+.custom-button:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    border-radius: 4px;
+    padding: 10px 20px;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Show Postulation{% endblock %}
+
+{% block body %}
+<h1>Postulation Details</h1>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <td>{{ postulation.id }}</td>
+    </tr>
+    <tr>
+        <th>Nom</th>
+        <td>{{ postulation.nom }}</td>
+    </tr>
+    <!-- Add other fields as needed -->
+</table>
+
+<a href="{{ path('/postulation/{id}/edit', {'id': postulation.id}) }}">Edit</a>
+<a href="{{ path('/postulation') }}">Back to list</a>
+{% endblock %}

@@ -1,0 +1,108 @@
+{# templates/offreuser/index.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        body {
+            background-color: #f4f4f9;
+            font-family: 'Arial', sans-serif;
+        }
+        .header {
+            text-align: center;
+            margin: 50px 0;
+            color: #333;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .header h2 {
+            font-size: 1.5rem;
+            color: #666;
+        }
+        .offers-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .card {
+            width: 300px;
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, #6a89cc, #b8e994);
+            color: white;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .card-text {
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+        .card-text strong {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .btn-apply {
+            background-color: #f39c12;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .btn-apply:hover {
+            background-color: #e67e22;
+        }
+        .alert-info {
+            font-size: 1.25rem;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="header">
+        <h1>Welcome to the User Offers Page</h1>
+        <h2>Available Offers</h2>
+    </div>
+    <div class="offers-container">
+        {% for offre in offres %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ offre.title }}</h5>
+                    <p class="card-text"><strong>Description:</strong> {{ offre.description }}</p>
+                    <p class="card-text"><strong>Lieu:</strong> {{ offre.lieu }}</p>
+                    <p class="card-text"><strong>Date:</strong> {{ offre.date }}</p>
+                    <a href="{{ path('user_offreuser_show', {id: offre.id}) }}" class="btn-apply">View Details</a>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <p class="alert alert-info">No offers available at the moment.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+    

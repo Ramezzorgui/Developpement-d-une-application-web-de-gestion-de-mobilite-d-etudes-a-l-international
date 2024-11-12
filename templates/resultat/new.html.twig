@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Resultat{% endblock %}
+
+{% block body %}
+    <h1>Create Resultat</h1>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <div class="text-center mt-3">
+        <a href="{{ path('app_postulation_index') }}" class="btn btn-secondary">Retour à la Liste</a>
+    </div>
+{% endblock %}

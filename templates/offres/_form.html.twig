@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <table class="table">
+                <tbody>
+                    {% for field in form %}
+                        <tr>
+                            <th>{{ form_label(field) }}</th>
+                            <td>{{ form_widget(field, {'attr': {'class': 'form-control'}}) }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

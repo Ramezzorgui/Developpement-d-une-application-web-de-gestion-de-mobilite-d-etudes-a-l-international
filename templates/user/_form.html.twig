@@ -1,0 +1,42 @@
+{{ form_start(form) }}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>{{ form_label(form.email) }}</th>
+                        <td>{{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form_label(form.nom) }}</th>
+                        <td>{{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form_label(form.prenom) }}</th>
+                        <td>{{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form_label(form.identifiant) }}</th>
+                        <td>{{ form_widget(form.identifiant, {'attr': {'class': 'form-control'}}) }}</td>
+                    </tr>
+                    <tr>
+                        <th>{{ form_label(form.classe) }}</th>
+                        <td>{{ form_widget(form.classe, {'attr': {'class': 'form-control'}}) }}</td>
+                    </tr>
+
+                    <tr>
+                        <th>{{ form_label(form.password) }}</th>
+                        <td>{{ form_widget(form.password, {'attr': {'class': 'form-control'}}) }}</td>
+                    </tr>
+                    <!-- Add more form fields as needed -->
+                </tbody>
+            </table>
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{ form_end(form) }}

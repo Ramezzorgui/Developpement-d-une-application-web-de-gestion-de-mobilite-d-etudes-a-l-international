@@ -1,0 +1,32 @@
+
+
+
+<table border="1" align="center">
+
+    <caption>List of results</caption>
+
+    <tr>
+
+        <td>Title</td>
+        <td>score</td>
+        <td>date</td>
+        <td>status</td>
+
+
+    </tr>
+
+
+
+    {% for a in list %}
+    <tr>
+        <td>{{a.id}}</td>
+        
+        <td>{{a.score}}</td>
+        <td>{{a.date|date('Y-m-d H:i:s') }}</td>
+        <td>{{a.status}}</td>
+        
+        
+    </tr>
+
+    {% endfor %}
+</table>

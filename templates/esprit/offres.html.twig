@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos de Nous</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        header {
+            background: red; /* Couleur verte inspirée des paysages tunisiens */
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .content {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .content h2 {
+            color: red; /* Couleur verte pour les titres */
+        }
+
+        .content p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .image {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .image img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: red;
+            color: #fff;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>À Propos de Nous</h1>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <h2>Notre Mission</h2>
+            <p>
+                Nous sommes fiers de partager avec vous notre passion pour la culture tunisienne et notre engagement à préserver 
+                et promouvoir notre patrimoine. Notre mission est de fournir des services et des produits qui incarnent l'esprit 
+                d'hospitalité tunisienne et qui valorisent nos traditions.
+            </p>
+
+            <h2>Notre Histoire</h2>
+            <p>
+                Fondée en 2003, notre entreprise a été créée avec la vision de célébrer et de faire découvrir la beauté de la 
+                Tunisie. Nous avons commencé avec un petit groupe de passionnés et avons évolué pour devenir un acteur clé dans 
+                le domaine de [votre domaine d'activité]. Notre parcours est marqué par des défis, des réussites et un amour profond 
+                pour notre culture.
+            </p>
+
+            <h2>Notre Équipe</h2>
+            <p>
+                Notre équipe est composée de professionnels dévoués et passionnés qui partagent une vision commune : offrir une 
+                expérience authentique et mémorable à nos clients. Chacun de nos membres apporte son expertise unique et son 
+                amour pour la Tunisie, ce qui fait de nous une équipe dynamique et engagée.
+            </p>
+
+            <div class="image">
+                <img src="{{ asset('images/tunisia-culture.jpg') }}" alt="Culture tunisienne">
+            </div>
+
+            <h2>Nous Contacter</h2>
+            <p>
+                Nous serions ravis de répondre à vos questions et de vous fournir davantage d'informations sur nos activités. 
+                N'hésitez pas à nous contacter par contact@esprit.tn/(+216) 70 250 000 ou à visiter notre bureau situé à [adresse].
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Esprit. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>

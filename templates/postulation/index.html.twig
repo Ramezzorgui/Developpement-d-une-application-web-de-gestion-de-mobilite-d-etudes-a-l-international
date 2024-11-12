@@ -1,0 +1,187 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Postulation Index{% endblock %}
+
+{% block body %}
+    <style>
+        .table-container {
+            margin: 20px auto;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+
+        h2 {
+            margin-top: 30px;
+            color: #007bff;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            color: #495057;
+            font-weight: bold;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .table a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .table a:hover {
+            text-decoration: underline;
+        }
+
+        .no-records {
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .create-new-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .create-new-link a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .create-new-link a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-results-btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+            font-size: 16px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit-results-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <div class="table-container">
+        <h1>Postulation Index</h1>
+
+        {% for offre in offres %}
+            <h2>Postulations for {{ offre.title }}</h2>
+
+            <!-- Button to submit results -->
+            <form action="{{ path('app_submit_results', {'id': offre.id}) }}" method="post">
+                <button type="submit" class="submit-results-btn">Submit Results</button>
+            </form>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Mail</th>
+                        <th>Specialite</th>
+                        <th>Moy1</th>
+                        <th>Moy2</th>
+                        <th>Moy3</th>
+                        <th>Score</th>
+                        <th>Etude</th>
+                        <th>Relevenote</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if postulationsByOffre[offre.id] is defined and postulationsByOffre[offre.id] is not empty %}
+                    {% for postulation in postulationsByOffre[offre.id] %}
+                        <tr>
+                            <td>{{ postulation.id }}</td>
+                            <td>{{ postulation.nom }}</td>
+                            <td>{{ postulation.prenom }}</td>
+                            <td>{{ postulation.mail }}</td>
+                            <td>{{ postulation.specialite }}</td>
+                            <td>{{ postulation.moy1 }}</td>
+                            <td>{{ postulation.moy2 }}</td>
+                            <td>{{ postulation.moy3 }}</td>
+                            <td>{{ postulation.score }}</td>
+                            <td>{{ postulation.etude }}</td>
+                            <td>
+                                {% if postulation.relevenote %}
+                                    <a href="{{ asset('uploads/' ~ postulation.relevenote) }}" target="_blank">Voir</a>
+                                {% else %}
+                                    Pas de fichier
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{{ path('app_postulation_show', {'id': postulation.id}) }}">Show</a>
+                                <a href="{{ path('app_postulation_edit', {'id': postulation.id}) }}">Edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="12" class="no-records">No records found</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="12" class="no-records">No results for this offer</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        {% endfor %}
+
+        <div class="create-new-link">
+            <a href="{{ path('app_postulation_new') }}">Create New</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const rows = document.querySelectorAll('.table tbody tr');
+            rows.forEach(row => {
+                row.addEventListener('mouseover', () => {
+                    row.style.backgroundColor = '#e9ecef';
+                });
+                row.addEventListener('mouseout', () => {
+                    row.style.backgroundColor = '';
+                });
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,76 @@
+{# templates/Mailer/sendEmails.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Send Emails{% endblock %}
+
+{% block stylesheets %}
+<style>
+    .container {
+        margin-top: 50px;
+    }
+    .card {
+        border: 1px solid #e3e6f0;
+        border-radius: 0.35rem;
+        box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+    }
+    .card-header {
+        background-color: #4e73df;
+        color: white;
+        text-align: center;
+        font-size: 1.25rem;
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid #e3e6f0;
+    }
+    .card-body {
+        padding: 1.25rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 200px; /* Adjust this height as needed */
+    }
+    .btn-primary {
+        background-color: #4e73df;
+        border: none;
+        padding: 0.5rem 1.5rem;
+        font-size: 1rem;
+        transition: background-color 0.2s;
+    }
+    .btn-primary:hover {
+        background-color: #2e59d9;
+    }
+    .alert {
+        margin-bottom: 1rem;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="card">
+                    <div class="card-header">
+                        Send Emails to 4ème Class Students
+                    </div>
+                    <div class="card-body">
+                        {% for message in app.flashes('info') %}
+                            <div class="alert alert-info">{{ message }}</div>
+                        {% endfor %}
+                        {% for message in app.flashes('error') %}
+                            <div class="alert alert-danger">{{ message }}</div>
+                        {% endfor %}
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">{{ message }}</div>
+                        {% endfor %}
+
+                        <form action="{{ path('app_send_emails') }}" method="post">
+                            <button type="submit" class="btn btn-primary">Send Emails</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

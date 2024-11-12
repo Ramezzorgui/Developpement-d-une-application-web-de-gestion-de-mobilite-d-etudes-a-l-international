@@ -1,0 +1,183 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire de Postulation{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="number"],
+        .form-group textarea,
+        .form-group select,
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background-color: #f9f9f9;
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group input[type="email"]:focus,
+        .form-group input[type="number"]:focus,
+        .form-group textarea:focus,
+        .form-group select:focus,
+        .form-group input[type="file"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+            background-color: #ffffff;
+        }
+
+        .form-group .form-control {
+            padding: 12px;
+            border-radius: 6px;
+        }
+
+        .form-group .form-error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="section">
+        <h2 class="section-title">Formulaire de Postulation</h2>
+
+        {# Display success message if available #}
+        {% if app.session.flashBag.has('success') %}
+            <div class="alert-success">
+                {{ app.session.flashBag.get('success')|first }}
+            </div>
+        {% endif %}
+
+        {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+            <div class="form-group">
+                {{ form_label(form.nom) }}
+                {{ form_widget(form.nom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.nom) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.prenom) }}
+                {{ form_widget(form.prenom, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.prenom) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.mail) }}
+                {{ form_widget(form.mail, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.mail) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.specialite) }}
+                {{ form_widget(form.specialite, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.specialite) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.moy1) }}
+                {{ form_widget(form.moy1, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.moy1) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.moy2) }}
+                {{ form_widget(form.moy2, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.moy2) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.moy3) }}
+                {{ form_widget(form.moy3, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.moy3) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.etude) }}
+                {{ form_widget(form.etude, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.etude) }}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.relevenote) }}
+                {{ form_widget(form.relevenote, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(form.relevenote) }}
+            </div>
+            
+            <button type="submit">Soumettre</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

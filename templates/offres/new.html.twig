@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Offres{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body {
+            background-color: #eef2f7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            margin-top: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-top: 8px solid #007bff;
+        }
+
+        .form-title {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        form .form-group {
+            margin-bottom: 20px;
+        }
+
+        form .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        form .form-control {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        form .form-control.description-field {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .btn-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+        }
+
+        .btn-primary, .btn-secondary {
+            width: 48%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        /* Hide CSRF token field */
+        input[name="form[_token]"] {
+            display: none;
+        }
+
+        /* Responsive design for smaller screens */
+        @media screen and (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .btn-secondary {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <h1 class="form-title">Create new Offres</h1>
+
+        {{ include('offres/_form.html.twig') }}
+
+        <div class="btn-container">
+            <a href="{{ path('app_offres_index') }}" class="btn btn-secondary">Back to list</a>
+        </div>
+    </div>
+{% endblock %}

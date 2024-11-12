@@ -1,0 +1,38 @@
+
+
+
+<table border="1" align="center">
+
+    <caption>List of classrooms</caption>
+
+    <tr>
+
+        <td>Title</td>
+        <td>score</td>
+        <td>status</td>
+        <td>specialité</td>
+        <td>moy1</td>
+        <td>moy2</td>
+        <td>moy3</td>
+        <td></td>
+
+
+    </tr>
+
+
+
+    {% for a in list %}
+    <tr>
+        <td>{{a.resultat.offres.title}}</td>
+        <td>{{a.resultat.score}}</td> 
+        <td>{{a.resultat.status}}</td>
+        <td>{{a.resultat.specialite}}</td>
+        <td>{{a.resultat.moy1}}</td>
+        <td>{{a.resultat.moy2}}</td>
+        <td>{{a.resultat.moy3}}</td>
+        <td>{{a.resultat.relevenote}}</td>
+        
+    </tr>
+
+    {% endfor %}
+</table>    

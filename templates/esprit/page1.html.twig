@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Esprit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #c00000;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .header img {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .header a {
+            color: #fff;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 14px;
+        }
+
+        .header a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            background-color: #eaeaea;
+        }
+
+        .horizontal-red {
+            display: inline-block;
+            color: red;
+            margin-right: 40px;
+        }
+
+        .horizontal-red a {
+            color: red;
+            text-decoration: none;
+        }
+
+        .horizontal-red a:hover {
+            text-decoration: underline;
+        }
+
+        .notification-area {
+            position: relative;
+            display: inline-block;
+        }
+
+        .notification-icon {
+            font-size: 24px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-dropdown {
+            display: none; /* Hidden by default */
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            z-index: 1000;
+            overflow: hidden;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .notification-dropdown ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .notification-dropdown li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .notification-dropdown li:last-child {
+            border-bottom: none;
+        }
+
+        .notification-dropdown li a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+        }
+
+        .notification-dropdown li a:hover {
+            text-decoration: underline;
+            color: #007bff;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="header">
+        <div>
+            <a href="tel:+21670250000"><i class="fas fa-phone-alt"></i> (+216) 70 250 000</a>
+            <a href="mailto:mobilite-internationale@esprit.tn"><i class="fas fa-envelope"></i> mobilite-internationale@esprit.tn</a>
+            <a href="https://www.facebook.com/profile.php?id=100089416522018"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/esprit_ingenieur?fbclid=IwZXh0bgNhZW0CMTAAAR1X1VRmi5fP8Y4cvlGEU94ArSooaIHKLRiq9SjrR--sQoTAoCQ1dLjddB8_aem_Eu551qyGE5n0YJe1KdrJ4w"><i class="fab fa-instagram"></i></a>
+            <a href="https://twitter.com/esprit_tn"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.youtube.com/@esprit-ecolesuppriveedinge5115"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/school/esprit_2/posts/?feedView=all"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="notification-area">
+            <i class="fas fa-bell notification-icon" id="notification-icon"></i>
+            <div class="notification-dropdown" id="notification-dropdown">
+                <ul>
+                    {% if notifs is not empty %}
+                        {% for notification in notifs %}
+                            <li>
+                                
+                                    {{ notification.message }} - {{ notification.createdAt|date('Y-m-d H:i:s') }}
+                                
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <li>No notifications</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        <a href="{{ path('app_logout') }}" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i> Déconnexion</a>
+    </div>
+    <div class="container">
+        <div class="content">
+            <figure><img src="{{ asset('home/assets/images/Logo_ESPRIT.jpg') }}" alt="sign in image"></figure>
+            <h2 class="horizontal-red"><a href="{{ path('apropos') }}">A propos de nous</a></h2>
+                <h2 class="horizontal-red"><a href="{{ path('user_resultat_index') }}">Voir mes résultats</a></h2>
+            <h2 class="horizontal-red"><a href="{{ path('user_offreuser_index') }}">Offres</a></h2>
+            <p>
+                Explorez de nouveaux horizons avec le programme de mobilité internationale de l'ESPRIT. Nous croyons en l'importance de l'expérience
+                internationale dans le développement académique et personnel de nos étudiants. Grâce à notre programme de mobilité, vous avez l'opportunité
+                unique de passer votre dernière année d'études à l'étranger, immergé dans une nouvelle culture et enrichissant votre perspective académique.
+                Que vous souhaitiez étudier dans une université partenaire renommée, acquérir une expérience professionnelle à l'international, 
+                ou simplement découvrir de nouveaux paysages, notre programme de mobilité vous offre la flexibilité et le soutien nécessaires pour transformer vos ambitions en réalité. 
+                Préparez-vous à embrasser une expérience qui va au-delà des frontières et ouvre des portes vers un avenir globalisé et prometteur.
+            </p>
+            <h2>QUAND ?</h2>
+            <p>
+                L'aspect international peut intervenir dans le cursus même des étudiants d'Esprit grâce à la mobilité et l'expérience à l'internationale. 
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2024 ESPRIT - All rights reserved.</p>
+    </div>
+
+    <script>
+        document.getElementById('notification-icon').addEventListener('click', function() {
+            var dropdown = document.getElementById('notification-dropdown');
+            dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+        });
+
+        window.addEventListener('click', function(event) {
+            if (!event.target.matches('#notification-icon')) {
+                var dropdown = document.getElementById('notification-dropdown');
+                if (dropdown.style.display === 'block') {
+                    dropdown.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

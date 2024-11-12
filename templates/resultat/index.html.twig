@@ -1,0 +1,49 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Resultats Index{% endblock %}
+
+{% block body %}
+    <h1>Resultats Index</h1>
+
+    {% for offre in offres %}
+        <h2>Results for {{ offre.title }}</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prenom</th>
+                    <th>Email</th>
+                    <th>Specialite</th>
+                    <th>Moyenne 1</th>
+                    <th>Moyenne 2</th>
+                    <th>Moyenne 3</th>
+                    <th>Score</th>
+                    <th>status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for resultat in resultatsByOffre[offre.id] %}
+                <tr>
+                    <td>{{ resultat.postulation.id }}</td>
+                    <td>{{ resultat.postulation.nom }}</td>
+                    <td>{{ resultat.postulation.prenom }}</td>
+                    <td>{{ resultat.postulation.mail }}</td>
+                    <td>{{ resultat.postulation.specialite }}</td>
+                    <td>{{ resultat.postulation.moy1 }}</td>
+                    <td>{{ resultat.postulation.moy2 }}</td>
+                    <td>{{ resultat.postulation.moy3 }}</td>
+                    <td>{{ resultat.score }}</td>
+                    <td>{{ resultat.status }}</td>
+                    <td>{{ resultat.date|date('Y-m-d H:i') }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">No results found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+{% endblock %}
