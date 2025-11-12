@@ -21,12 +21,15 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Copy application
 COPY . .
 
-# Install dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Install dependencies (PRODUCTION)
+RUN composer install --no-dev --optimize-autoloader --no-scripts
 
-# Install assets and clear cache
+# Install assets
 RUN php bin/console assets:install public --env=prod --no-debug
-RUN php bin/console cache:clear --env=prod --no-debug
+
+# Clear cache (important: do this after assets install)
+RUN APP_ENV=prod php bin/console cache:clear --no-debug --no-warmup
+RUN APP_ENV=prod php bin/console cache:warmup
 
 EXPOSE 8000
 
