@@ -15,9 +15,3 @@ services:
         value: prod
       - key: APP_SECRET
         generateValue: true
-
-databases:
-  - name: symfony-db
-    plan: free
-    databaseName: symfony_db
-    user: symfony_user
