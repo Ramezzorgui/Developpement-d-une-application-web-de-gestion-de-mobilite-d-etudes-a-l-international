@@ -1,4 +1,3 @@
-
 services:
   - type: web
     name: symfony-app
@@ -7,12 +6,14 @@ services:
     buildCommand: |
       curl -s https://getcomposer.org/installer | php
       php composer.phar install --no-dev --optimize-autoloader
-      php bin/console assets:install
-      php bin/console cache:clear --env=prod
-    startCommand: |
-      php bin/console server:run --env=prod
+      php bin/console assets:install public --env=prod --no-debug
+    startCommand: symfony server:start --port=$PORT --no-tls
     envVars:
       - key: APP_ENV
         value: prod
       - key: APP_SECRET
         generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: symfony-db
+          property: connectionString
