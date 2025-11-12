@@ -1,7 +1,7 @@
 <?php
 // src/Security/LoginSuccessHandler.php
 
-namespace App\Security;
+namespace App\security;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
