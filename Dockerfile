@@ -2,7 +2,7 @@ FROM php:8.2-cli
 
 WORKDIR /app
 
-# Install system dependencies
+# Install system dependencies (sans wget)
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -10,18 +10,14 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     zip \
-    unzip \
-    wget
+    unzip
+    # Supprimez wget
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Install Symfony CLI
-RUN wget https://get.symfony.com/cli/installer -O - | bash
-RUN mv /root/.symfony5/bin/symfony /usr/local/bin/symfony
 
 # Copy application
 COPY . .
