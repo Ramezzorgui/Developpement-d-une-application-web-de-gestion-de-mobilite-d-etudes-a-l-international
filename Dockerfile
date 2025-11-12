@@ -38,4 +38,4 @@ RUN APP_ENV=prod php bin/console cache:warmup
 
 EXPOSE 8000
 
-CMD ["php", "-S", "0.0.0.0:${PORT:-8000}", "public/index.php"]
+CMD ["php", "-S", "0.0.0.0:8000", "public/index.php"]
