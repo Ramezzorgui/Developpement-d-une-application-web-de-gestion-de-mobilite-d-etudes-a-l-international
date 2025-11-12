@@ -1,0 +1,18 @@
+
+services:
+  - type: web
+    name: symfony-app
+    env: php
+    plan: free
+    buildCommand: |
+      curl -s https://getcomposer.org/installer | php
+      php composer.phar install --no-dev --optimize-autoloader
+      php bin/console assets:install
+      php bin/console cache:clear --env=prod
+    startCommand: |
+      php bin/console server:run --env=prod
+    envVars:
+      - key: APP_ENV
+        value: prod
+      - key: APP_SECRET
+        generateValue: true
