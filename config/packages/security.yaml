@@ -19,7 +19,7 @@ security:
             form_login:
                 login_path: app_login
                 check_path: app_login
-                success_handler: App\Security\LoginSuccessHandler
+                success_handler: App\security\LoginSuccessHandler
 
                 default_target_path: app_home # Specify the default target path here
             logout:
